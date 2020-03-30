@@ -1,0 +1,136 @@
+[
+	{
+		"voiceCommands": [
+			"engage",
+			"charge fsd",
+			"drop out of super cruise",
+			"drop out of supercruise",
+			"drop out of super Cruise"
+		],
+		"keysToPress": [
+			"j"
+		]
+	},
+	{
+		"voiceCommands": [
+			"retract landing gear",
+			"deploy landing gear"
+		],
+		"keysToPress": [
+			"l"
+		]
+	},
+	{
+		"voiceCommands": [
+			"set speed to 0%"
+		],
+		"keysToPress": [
+			"x"
+		]
+	},
+	{
+		"voiceCommands": [
+			"set speed to 100%"
+		],
+		"keysToPress": [
+			"+"
+		]
+	},
+	{
+		"voiceCommands": [
+			"toggle flight assist"
+		],
+		"keysToPress": [
+			"z"
+		]
+	},
+	{
+		"voiceCommands": [
+			"boost"
+		],
+		"keysToPress": [
+			"shift"
+		]
+	},
+	{
+		"voiceCommands": [
+			"target"
+		],
+		"keysToPress": [
+			"t"
+		]
+	},
+	{
+		"voiceCommands": [
+			"deploy hardpoints",
+			"retract hardpoints",
+			"deploy hard points",
+			"retract hard points"
+		],
+		"keysToPress": [
+			"u"
+		]
+	},
+	{
+		"voiceCommands": [
+			"show fps",
+			"hide fps",
+			"show FPS",
+			"hide FPS"
+		],
+		"keysToPress": [
+			"ctrl",
+			"f"
+		]
+	},
+	{
+		"voiceCommands": [
+			"toggle spotlight"
+		],
+		"keysToPress": [
+			"insert"
+		]
+	},
+	{
+		"voiceCommands": [
+			"increase engines power"
+		],
+		"keysToPress": [
+			"up"
+		]
+	},
+	{
+		"voiceCommands": [
+			"increase weapons power"
+		],
+		"keysToPress": [
+			"right"
+		]
+	},
+	{
+		"voiceCommands": [
+			"increase system power"
+		],
+		"keysToPress": [
+			"left"
+		]
+	},
+	{
+		"voiceCommands": [
+			"reset power distribution"
+		],
+		"keysToPress": [
+			"down"
+		]
+	},
+	{
+		"voiceCommands": [
+			"toggle cargo scoop",
+			"deploy cargo scoop",
+			"retract cargo scoop"
+		],
+		"keysToPress": [
+			"home"
+		]
+	}
+]
