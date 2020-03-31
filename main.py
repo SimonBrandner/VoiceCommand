@@ -4,11 +4,14 @@ import json
 import time
 import sys
 
+Stop = False
+
 def getKeysByVoiceCommand(voiceCommand, data):
     for group in data:
         for command in group["voiceCommands"]:
-            if (command == voiceCommand):
+            if (command in voiceCommand):
                 return group["keysToPress"]
+    return "Error"
 
 def pressAppropriateKeys(keys):
     for key in keys:
@@ -60,6 +63,29 @@ def releaseAppropriateKeys(keys):
         else:
             keyboard.release(key)
 
+def handleVoiceCommand(recognizer, audio):
+    print("Trying to recognize what you said.")
+    try:
+        voiceCommand = r.recognize_google(audio)
+        if (voiceCommand == "exit"): 
+            print("Exit command called")
+            global Stop
+            Stop = True
+
+        print("You said: " + voiceCommand)
+
+        keys = getKeysByVoiceCommand(voiceCommand, data)
+        if (not(keys == "Error")):
+            pressAppropriateKeys(keys)
+            releaseAppropriateKeys(keys)
+        else:
+            print("That's unknown command")
+    except sr.UnknownValueError:
+        print("Google Speech Recognition could not understand audio")
+    except sr.RequestError as e:
+        print("Could not request results from Google Speech Recognition service; {0}".format(e))
+    print("You may speak.")
+
 if __name__ == "__main__":
     r = sr.Recognizer()
     mic = sr.Microphone()
@@ -72,18 +98,14 @@ if __name__ == "__main__":
     except Exception as e: 
         sys.exit(e)
 
-    while(True):
-        with mic as source:
-            audio = r.listen(source)
-            try:
-                voiceCommand = r.recognize_google(audio)
-                if (voiceCommand == "quit"): break
-                print(voiceCommand)
+    with mic as source:
+        r.adjust_for_ambient_noise(source)
 
-                keys = getKeysByVoiceCommand(voiceCommand, data)
+    stopListening = r.listen_in_background(mic, handleVoiceCommand)
+    
+    print("You may speak.")
 
-                pressAppropriateKeys(keys)
-                releaseAppropriateKeys(keys)
-
-            except Exception as e: 
-                print(e)
+    while (Stop == False):
+        pass
+    
+    stopListening()
